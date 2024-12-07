@@ -68,7 +68,11 @@ closeMenu.addEventListener('click', () => {
     }, 500);
 });
 
+let dismissed = false; 
+
 window.addEventListener("scroll", () => {
+    if (dismissed) return; 
+
     if (window.scrollY > 400) {
         notify.style.display = "block";
         notify.style.opacity = "1";
@@ -77,5 +81,15 @@ window.addEventListener("scroll", () => {
         setTimeout(() => {
             notify.style.display = "none";
         }, 500);
+    }
+});
+
+document.addEventListener("click", (event) => {
+    if (!notify.contains(event.target)) {
+        notify.style.opacity = "0";
+        setTimeout(() => {
+            notify.style.display = "none";
+        }, 500);
+        dismissed = true;
     }
 });

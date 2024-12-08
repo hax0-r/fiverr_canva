@@ -1,0 +1,1 @@
+In Website 6,7 bg img is left at review section
